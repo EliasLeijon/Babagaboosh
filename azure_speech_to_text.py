@@ -2,6 +2,7 @@ import time
 import azure.cognitiveservices.speech as speechsdk
 import keyboard
 import os
+from privatekeys import AZURE_KEY, AZURE_REGION
 
 class SpeechToTextManager:
     azure_speechconfig = None
@@ -12,7 +13,7 @@ class SpeechToTextManager:
         # Creates an instance of a speech config with specified subscription key and service region.
         # Replace with your own subscription key and service region (e.g., "westus").
         try:
-            self.azure_speechconfig = speechsdk.SpeechConfig(subscription=os.getenv('AZURE_TTS_KEY'), region=os.getenv('AZURE_TTS_REGION'))
+            self.azure_speechconfig = speechsdk.SpeechConfig(subscription=AZURE_KEY, region=AZURE_REGION)
         except TypeError:
             exit("Ooops! You forgot to set AZURE_TTS_KEY or AZURE_TTS_REGION in your environment!")
         
